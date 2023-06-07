@@ -1,0 +1,73 @@
+import random
+print(" ")
+print("PyhtonCorp ATM")
+print(" ")
+cardnumber = random.randint(1,9999)
+print("************",cardnumber, sep="")
+print(" ")
+WalletContent = 2000
+
+def atmcalc():
+    global WalletContent
+    print("Kart Bakiyenizi görüntülemek için 1")
+    print("Para Yatırmak için 2")
+    print("Para çekmek için 3")
+    print("Karttan karta işlem için 4")
+    print("Ve Çıkış yapmak için 5'e tıklayınız.")
+
+    answer = int(input("Yapacağınız işlemi seçiniz. "))
+    print(" ")
+
+    if answer == 1:
+        print("Kart Bakiyeniz:", WalletContent, "$.")
+        print(" ")
+        answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+        if answer2 == 1:
+            atmcalc()
+        elif answer2 == 2:
+            print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+            print(" ")
+    elif answer == 2:
+        answer3 = int(input("Katınıza ne kadar yatırmak istersiniz? "))
+        WalletContent = WalletContent + answer3
+        print("Teşekkür ederiz! Güncel Kart Bakiyeniz:", WalletContent, "$")
+        answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+        if answer2 == 1:
+            atmcalc()
+        elif answer2 == 2:
+            print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+            print(" ")
+    elif answer == 3:
+        answer4 = int(input("Kartınızdan ne kadar çekmek istersiniz? "))
+        if answer4 > WalletContent:
+            print("Üzgünüz, kartınızda bu işlem için gerekli olan para miktarı yok. Lütfen daha küçük rakamlarla deneyin.")
+        else:
+            WalletContent = WalletContent - answer4
+            print("Teşekkür ederiz! Güncel Kart Bakiyeniz:", WalletContent, "$")
+        answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+        if answer2 == 1:
+            atmcalc()
+        elif answer2 == 2:
+            print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+            print(" ")
+    elif answer == 4:
+        cardnoreceiver = int(input("Alıcı'nın kart numarasını giriniz?"))
+        print("...")
+        sendno = int(input("Ne kadar göndermek istiyorsunuz?"))
+        transactionno = random.randint(1,9999999999999999)
+        if sendno > WalletContent:
+            print("Üzgünüz, kartınızda bu işlem için gerekli olan para miktarı yok. Lütfen daha küçük rakamlarla deneyin.")
+        else:
+            print(cardnoreceiver, "Nolu karta yaptığınız", transactionno, "Nolu", sendno, "Tllik işlem başarıyla tamamlanmıştır. İyi günler dileriz.")
+            WalletContent = WalletContent - sendno
+            print("Güncel Kart bakiyeniz:", WalletContent)
+            answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+            if answer2 == 1:
+                atmcalc()
+            elif answer2 == 2:
+                print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+                print(" ")
+    elif answer == 5:
+        print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+        print(" ")
+atmcalc()
