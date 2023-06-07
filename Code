@@ -41,6 +41,12 @@ def atmcalc():
         answer4 = int(input("Kartınızdan ne kadar çekmek istersiniz? "))
         if answer4 > WalletContent:
             print("Üzgünüz, kartınızda bu işlem için gerekli olan para miktarı yok. Lütfen daha küçük rakamlarla deneyin.")
+            answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+            if answer2 == 1:
+                atmcalc()
+            elif answer2 == 2:
+                print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+                print(" ")
         else:
             WalletContent = WalletContent - answer4
             print("Teşekkür ederiz! Güncel Kart Bakiyeniz:", WalletContent, "$")
@@ -57,6 +63,12 @@ def atmcalc():
         transactionno = random.randint(1,9999999999999999)
         if sendno > WalletContent:
             print("Üzgünüz, kartınızda bu işlem için gerekli olan para miktarı yok. Lütfen daha küçük rakamlarla deneyin.")
+            answer2 = int(input("Başka işlem yapmak için 1, çıkış yapmak için 2'yi seçiniz. "))
+            if answer2 == 1:
+                atmcalc()
+            elif answer2 == 2:
+                print("PythonCorp'u tercih ettiğiniz için teşekkür ederiz.")
+                print(" ")
         else:
             print(cardnoreceiver, "Nolu karta yaptığınız", transactionno, "Nolu", sendno, "Tllik işlem başarıyla tamamlanmıştır. İyi günler dileriz.")
             WalletContent = WalletContent - sendno
